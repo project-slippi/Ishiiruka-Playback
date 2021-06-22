@@ -24,9 +24,9 @@ jobs:
           rm -rf *netplay*
           find ./ -mindepth 2 -type f -exec mv -t ./ -i '{}' +
           find . -type d -empty -delete
-          unzip *linux* && mv *linux* "playback-Linux.zip"
-          mv *macOS* "playback-Mac.zip"
-          mv *windows* "playback-Win.zip"
+          unzip *linux* && mv *linux* "playback-${{ env.VERSION }}-Linux.zip"
+          mv *.dmg "playback-${{ env.VERSION }}-Mac.dmg"
+          mv *windows* "playback-${{ env.VERSION }}-Win.zip"
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:
