@@ -19,12 +19,12 @@ jobs:
           workflow: pr-build.yml
           branch: slippi
           repo: project-slippi/Ishiiruka
-      - name: Organize release files"
+      - name: Organize release files
         run: |
           rm -rf *netplay*
           find ./ -mindepth 2 -type f -exec mv -t ./ -i '{}' +
           find . -type d -empty -delete
-          unzip *linux* && mv *linux* "playback-${{ env.VERSION }}-Linux.zip"
+          mv *linux* "playback-${{ env.VERSION }}-Linux.zip"
           mv *.dmg "playback-${{ env.VERSION }}-Mac.dmg"
           mv *windows* "playback-${{ env.VERSION }}-Win.zip"
       - name: Upload binaries to release
